@@ -13,7 +13,9 @@ namespace ShopeeSdkV2.Tests
     public class OrderTest : Core
     {
 
-
+        /// <summary>
+        /// 使用此 API 搜尋訂單
+        /// </summary>
         [TestMethod()]
         public void GetOrdersListTest()
         {
@@ -23,6 +25,9 @@ namespace ShopeeSdkV2.Tests
             Trace.Write(new JavaScriptSerializer().Serialize(r));
         }
 
+        /// <summary>
+        /// 使用此 api 獲取READY_TO_SHIP order_status的訂單清單。
+        /// </summary>
         [TestMethod()]
         public void GetShipmentListTest()
         {
@@ -31,6 +36,9 @@ namespace ShopeeSdkV2.Tests
             Trace.Write(new JavaScriptSerializer().Serialize(r));
         }
 
+        /// <summary>
+        /// 使用此 API 獲取訂單詳細資訊。
+        /// </summary>
         [TestMethod()]
         public void GetOrderDetailTest()
         {
@@ -39,6 +47,10 @@ namespace ShopeeSdkV2.Tests
             Trace.Write(new JavaScriptSerializer().Serialize(r));
         }
 
+
+        /// <summary>
+        /// 使用此 API 取消訂單。
+        /// </summary>
         [TestMethod()]
         public void CancelOrderTest()
         {
@@ -47,6 +59,9 @@ namespace ShopeeSdkV2.Tests
             Trace.Write(new JavaScriptSerializer().Serialize(r)); ;
         }
 
+        /// <summary>
+        /// 使用此 api 為訂單設置註釋。
+        /// </summary>
         [TestMethod()]
         public void SetNoteTest()
         {
