@@ -29,7 +29,7 @@ namespace ShopeeSdkV2.Tests
         [TestMethod()]
         public void ShipOrderTest()
         {
-            var r = client.ShipOrder(OrderSn, Dropoff: new Models.Logistics.ShipOrder.ShipOrderRequest.Dropoff(sender_real_name: "王小明"));
+            var r = client.ShipOrder(OrderSn, Dropoff: new Models.Logistics.ShipOrder.ShipOrderRequest._Dropoff(sender_real_name: "王小明"));
 
 
             //var r = client.ShipOrder(OrderSn,Pickup:new Models.Logistics.ShipOrder.ShipOrderRequest.Pickup(22981,null,null));
@@ -94,6 +94,15 @@ namespace ShopeeSdkV2.Tests
             Trace.Write(new JavaScriptSerializer().Serialize(r));
         }
 
+
+        [TestMethod()]
+        public void GetShippingDocumentInfoTest()
+        {
+            var r = client.GetShippingDocumentInfo(OrderSn);
+
+            Trace.Write(new JavaScriptSerializer().Serialize(r));
+        }
+
         /// <summary>
         /// 使用此 API 為每個訂單或包裹創建裝運單據任務
         /// </summary>
@@ -101,10 +110,34 @@ namespace ShopeeSdkV2.Tests
         public void CreateShippingDocumentTest()
         {
             var r = client.CreateShippingDocument(new List<Models.Logistics.CreateShippingDocument.CreateShippingDocumentRequest.Order> {
-                 new Models.Logistics.CreateShippingDocument.CreateShippingDocumentRequest.Order(OrderSn)
+                 new Models.Logistics.CreateShippingDocument.CreateShippingDocumentRequest.Order(OrderSn,tracking_number:"TW228917585840B")
             });
 
             Trace.Write(new JavaScriptSerializer().Serialize(r));
+        }
+
+
+       
+
+
+        [TestMethod()]
+        public void GetShippingDocumentResultTest()
+        {
+            var r = client.GetShippingDocumentResult(new List<Models.Logistics.GetShippingDocumentResult.GetShippingDocumentResultRequest.Order> { 
+                new Models.Logistics.GetShippingDocumentResult.GetShippingDocumentResultRequest.Order(OrderSn)
+            });
+
+            Trace.Write(new JavaScriptSerializer().Serialize(r));
+        }
+
+        [TestMethod()]
+        public void DownloadShippingDocumentTest()
+        {
+            var r = client.DownloadShippingDocument(new List<Models.Logistics.DownloadShippingDocument.DownloadShippingDocumentRequest.Order> { 
+                new Models.Logistics.DownloadShippingDocument.DownloadShippingDocumentRequest.Order(OrderSn)
+            });
+
+            Trace.Write(r);
         }
     }
 }

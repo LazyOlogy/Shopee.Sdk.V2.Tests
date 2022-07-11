@@ -17,7 +17,7 @@ namespace ShopeeSdkV2.Tests
         public void GetShopAuthorizationUrlTest()
         {
 
-            Trace.Write(client.GetShopAuthorizationUrl("https://www.google.com.tw"));
+            Trace.Write(client.GetShopAuthorizationUrl(Webhook));
         }
 
 
@@ -31,7 +31,7 @@ namespace ShopeeSdkV2.Tests
         [TestMethod()]
         public void GetAccessTokenTest()
         {
-            string Code = "496567576872516f6753527a49436668";
+            string Code = "794f564f426164657278624b73466d66";
             client = new Client(PartnerId, ShopId, Key);
             var r = client.GetAccesstoken(Code);
             Trace.Write(new JavaScriptSerializer().Serialize(r));

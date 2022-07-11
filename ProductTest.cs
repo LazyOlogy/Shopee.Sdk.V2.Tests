@@ -87,7 +87,7 @@ namespace ShopeeSdkV2.Tests
         [TestMethod()]
         public void GetItemBaseInfoTest()
         {
-            var r = client.GetItemBaseInfo(new List<long> { 1789772 });
+            var r = client.GetItemBaseInfo(new List<long> { 1792878 });
 
             Trace.Write(new JavaScriptSerializer().Serialize(r));
         }
@@ -98,7 +98,7 @@ namespace ShopeeSdkV2.Tests
         [TestMethod()]
         public void GetItemExtraInfoTest()
         {
-            var r = client.GetItemExtraInfo(new List<long> { 1789772 });
+            var r = client.GetItemExtraInfo(new List<long> { 1792878 });
 
             Trace.Write(new JavaScriptSerializer().Serialize(r));
         }
@@ -110,7 +110,9 @@ namespace ShopeeSdkV2.Tests
         public void UpdateStockTest()
         {
             var r = client.UpdateStock(1789772, new List<Models.Product.UpdateStock.UpdateStockRequest.Stock> {
-                new Models.Product.UpdateStock.UpdateStockRequest.Stock(999)
+                new Models.Product.UpdateStock.UpdateStockRequest.Stock(999,seller_stock:new List<Models.Product.UpdateStock.UpdateStockRequest.Stock.SellerStock>{ 
+                    new Models.Product.UpdateStock.UpdateStockRequest.Stock.SellerStock(999)
+                })
             });
 
             Trace.Write(new JavaScriptSerializer().Serialize(r));
@@ -123,6 +125,14 @@ namespace ShopeeSdkV2.Tests
         public void SearchItemTest()
         {
             var r = client.SearchItem(ItemName: "男士長大衣");
+
+            Trace.Write(new JavaScriptSerializer().Serialize(r));
+        }
+
+        [TestMethod()]
+        public void GetModelListTest()
+        {
+            var r = client.GetModelList(1792878);
 
             Trace.Write(new JavaScriptSerializer().Serialize(r));
         }

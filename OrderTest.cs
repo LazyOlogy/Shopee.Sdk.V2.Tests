@@ -20,7 +20,7 @@ namespace ShopeeSdkV2.Tests
         public void GetOrdersListTest()
         {
             var r = client.GetOrdersList(Models.Order.GetOrderList.EnumTimeRangeField.create_time,
-                 DateTime.Now.AddDays(-1), DateTime.Now);
+                 DateTime.Now.AddDays(-10), DateTime.Now, OrderStatus: Models.Order.EnumOrderStatus.READY_TO_SHIP);
 
             Trace.Write(new JavaScriptSerializer().Serialize(r));
         }
